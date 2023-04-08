@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject camera;
+    public float minSpeed;
+    public GameObject win;
+
 
     [SerializeField] private float shotPower, maxForce;
     private float shotFore;
     private Vector3 startPos, endPos, direction;
     private bool canShoot, shotStarted;
-    public GameObject camera;
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         canShoot = true;
+        rb.sleepThreshold = minSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(Camera.main.ScreenPointToRay(Input.mousePosition));
         Debug.Log(startPos);
         Debug.Log(endPos);
         if (Input.GetMouseButtonDown(0) && canShoot){
@@ -61,8 +66,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate(){
         if (!canShoot){
             direction = startPos-endPos;
+            direction.y=0;
             rb.AddForce(Vector3.Normalize(direction)*shotFore*shotPower,ForceMode.Impulse);
             startPos = endPos = Vector3.zero;
+        }
+        if (rb.IsSleeping()){
+            canShoot = true;
         }
     }
 
@@ -74,5 +83,12 @@ public class PlayerController : MonoBehaviour
             position = hit.point;
         }
         return position;
+    }
+
+    private void OnTriggerEnter(Collider other){
+        if (other.gameObject.tag == "Hole"){
+            Debug.Log("YOU WIN");
+            win.SetActive(true);
+        }
     }
 }
