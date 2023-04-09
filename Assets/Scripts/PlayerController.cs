@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public GameObject camera;
     public float minSpeed;
     public GameObject win;
+    public GameObject range;
+    public GameObject gameController;
+    private LineRenderer lineRenderer;
 
 
     [SerializeField] private float shotPower, maxForce;
@@ -14,12 +17,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPos, endPos, direction;
     private bool canShoot, shotStarted;
     private Rigidbody rb;
+    private Vector3 lastPosition;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         canShoot = true;
         rb.sleepThreshold = minSpeed;
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lastPosition = transform.position;
+        lineRenderer.SetPosition(0,transform.position);
+        lineRenderer.SetPosition(1,transform.position);
+        lineRenderer.enabled = false;
     }
 
     // Update is called once per frame
@@ -28,19 +37,27 @@ public class PlayerController : MonoBehaviour
         // Debug.Log(Camera.main.ScreenPointToRay(Input.mousePosition));
         Debug.Log(startPos);
         Debug.Log(endPos);
-        if (Input.GetMouseButtonDown(0) && canShoot){
+        //Xu li keo tha
+        if (Input.GetMouseButtonDown(0) && canShoot && OnMouseOverPlayer()){
             startPos = MousePositionInWorld();
             shotStarted = true;
+            lineRenderer.enabled = true;
         }
 
         if (Input.GetMouseButton(0) && shotStarted){
             endPos = MousePositionInWorld();
+            lineRenderer.SetPosition(1,new Vector3(startPos.x*2 - endPos.x,0f,startPos.z*2 - endPos.z));
             shotFore = Mathf.Clamp(Vector3.Distance(endPos,startPos),0,maxForce);
+
         }
         if (Input.GetMouseButtonUp(0) && shotStarted){
             canShoot = false;
             shotStarted = false;
+            range.SetActive(false);
+            lineRenderer.enabled = false;
+            gameController.GetComponent<GameController>().increaseTime();
         }
+        
         // float horAxis = Input.GetAxis("Horizontal");
         // float verAxis = Input.GetAxis("Vertical");
         // Vector3 camForward = camera.transform.forward;
@@ -72,6 +89,9 @@ public class PlayerController : MonoBehaviour
         }
         if (rb.IsSleeping()){
             canShoot = true;
+            lastPosition = transform.position;
+            lineRenderer.SetPosition(0,lastPosition);
+            range.SetActive(true);
         }
     }
 
@@ -82,13 +102,31 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit)){
             position = hit.point;
         }
+        position.y = 0;
         return position;
+    }
+
+    private bool OnMouseOverPlayer(){
+        Vector3 position = Vector3.zero;
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(ray, out hit)){
+            if (hit.transform.tag == "Player")
+            return true;
+        }
+        return false;
     }
 
     private void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Hole"){
             Debug.Log("YOU WIN");
             win.SetActive(true);
+            gameObject.SetActive(false);
+        }
+        if (other.gameObject.tag == "Respawn"){
+            Debug.Log("RESPAWN");
+            transform.position = lastPosition;
+            rb.velocity = Vector3.zero;
         }
     }
 }

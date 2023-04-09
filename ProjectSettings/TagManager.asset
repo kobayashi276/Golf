@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hole
+  - Range
   layers:
   - Default
   - TransparentFX
