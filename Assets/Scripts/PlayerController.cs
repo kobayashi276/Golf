@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && shotStarted){
             canShoot = false;
             shotStarted = false;
+            GetComponent<AudioSource>().Play();
             range.SetActive(false);
             lineRenderer.enabled = false;
             gameController.GetComponent<GameController>().increaseTime();

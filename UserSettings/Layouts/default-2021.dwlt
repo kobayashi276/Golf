@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1007
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 88
+  controlID: 18
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 89
+  controlID: 19
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 90
+  controlID: 20
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,22 +317,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\code\UnityProject\Golf_Github
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a05c0000
-    m_LastClickedID: 23712
-    m_ExpandedIDs: 00000000a05c000000ca9a3b
+    scrollPos: {x: 0, y: 307}
+    m_SelectedIDs: ac5c0000
+    m_LastClickedID: 23724
+    m_ExpandedIDs: 00000000a05c0000aa5c0000be5c0000c05c0000c85c0000345d0000bc5e0000f66900004e80000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -388,7 +388,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000
+    m_ExpandedInstanceIDs: c6230000d05c0000aebf0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -451,7 +451,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 268
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -488,9 +488,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: aa5c0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1cfbffff
+      m_ExpandedIDs: 7a19fcff8e1afcff3c1cfcff0e2afcff342afcfffe2afcffae2cfcff0e31fcff5a33fcff9237fcff0c41fcff9444fcfff445fcfffa47fcff3049fcfff44afcffc44bfcff4655fcff7c56fcffda59fcffe05efcff425ffcff48fafcff88fafcffbefafcffd8fafcff8afdfcff4204fdfffc08fdff7654fdffc488fdff0a89fdff2e89fdff3089fdff4048fefffa4dfeff885bfeffb45bfeff7462feffb286feff5e87feff4e89feff9692feff4694fefffe94feff9e9afeff249bfeff249ffeff08a0feff5062ffff0a64ffff8c6effffe06effffd870ffffe471ffffd674ffff8076ffffae77ffff5e7cffff727fffff4a8affff4c8affffb6a7ffff36a8ffff76aeffffcaaeffff86b0ffffc8b0ffff0cb1fffffcb3ffff6ab8ffffe6b9ffff2cbaffff7cbaffffc4baffffcebbffff1afbffff1cfbffff7a5b0000c25b0000da5b0000005c0000a46c00004a6e0000706e0000a06e00001a7300006c76000092760000c2760000ba8d0000e88d00002290000040900000ca910000d89100004a93000078930000a8930000ee9300001e94000014970000309700002ebb00006ada0000dae600000ce700009af0000080f10000cefc0000e400010070030100fa030100fc030100c60e0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -772,9 +772,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 440.47147, y: 211.33876, z: 3.9623837}
+    m_Target: {x: 574.6917, y: 231.33035, z: -0.6141609}
     speed: 2
-    m_Value: {x: 440.47147, y: 211.33876, z: 3.9623837}
+    m_Value: {x: 574.6917, y: 231.33035, z: -0.6141609}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -825,9 +825,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 236.30106
+    m_Target: 164.49393
     speed: 2
-    m_Value: 236.30106
+    m_Value: 164.49393
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -845,7 +845,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: 0.3895581, y: -0.57472706, z: 0.37286645, w: 0.61556995}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -11,6 +12,8 @@ public class GameController : MonoBehaviour
     public GameObject camera;
     public float rotationSpeed;
     public TextMeshProUGUI timeFeed;
+    public Button button;
+    public GameObject pauseFeed;
 
     private int time;
     private string[] scenes = new string[] {"Level1","Level2","Level3"};
@@ -19,6 +22,7 @@ public class GameController : MonoBehaviour
     {
         win.SetActive(false);
         time = 0;
+        pauseFeed.SetActive(false);
         // Cursor.lockState = CursorLockMode.Locked;
         // Cursor.visible = false;
     }
@@ -26,11 +30,29 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey("p")){
+            pauseFeed.SetActive(true);
+        }
 
-        if (!win.activeSelf)
+        if (!win.activeSelf){
             camera.transform.position = new Vector3(player.transform.position.x+2.54f,player.transform.position.y+3.11f,player.transform.position.z - 0.7f);
+        }
+        else{
+            camera.GetComponent<AudioSource>().Stop();
+            if (SceneManager.GetActiveScene().name == "Level3"){
+                button.GetComponentInChildren<TextMeshProUGUI>().text = "Main menu";
+            }
+        }
+            
             // camera.transform.rotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    public void closePauseFeed(){
+        pauseFeed.SetActive(false);
+    }
+
+    public void MainMenu(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
 
     public void increaseTime(){
@@ -46,7 +68,11 @@ public class GameController : MonoBehaviour
         string currentScene = SceneManager.GetActiveScene().name;
         for (int i=0;i<scenes.Length;i++){
             if (scenes[i]==currentScene){
-                UnityEngine.SceneManagement.SceneManager.LoadScene(scenes[i+1]);
+                if (i==scenes.Length-1){
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+                }
+                else
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(scenes[i+1]);
             }
         }
     }

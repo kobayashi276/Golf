@@ -34,10 +34,10 @@ public class MainMenu : MonoBehaviour
     }
         public void loadLevel_2()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Name_of_SceneLevel");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
     }
         public void loadLevel_3()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Name_of_SceneLevel");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
     }
 }
