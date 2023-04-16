@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float shotPower, maxForce;
     private float shotFore;
+    private Vector3 lastVel;
     private Vector3 startPos, endPos, direction;
     private bool canShoot, shotStarted;
     private Rigidbody rb;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lastVel = rb.velocity;
         // Debug.Log(Camera.main.ScreenPointToRay(Input.mousePosition));
         Debug.Log(startPos);
         Debug.Log(endPos);
@@ -129,5 +131,9 @@ public class PlayerController : MonoBehaviour
             transform.position = lastPosition;
             rb.velocity = Vector3.zero;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision){
+        Debug.Log("Triggered");
     }
 }
